@@ -1,0 +1,66 @@
+# ===== AI Meeting Assistant Agent =====
+# Python >= 3.10 recommended
+# Install: pip install -r requirements.txt
+# System dependency: ffmpeg binary (brew install ffmpeg on Mac)
+
+# --- Audio / Video acquisition ---
+yt-dlp>=2024.4.9              # Download audio from YouTube URLs
+pydub>=0.25.1                 # Audio manipulation / format conversion
+audioop-lts                   # Required by pydub on Python >= 3.13 (PEP 594 removed audioop)
+ffmpeg-python>=0.2.0          # FFmpeg bindings (binary must be installed separately)
+soundfile                     # Read/write audio files
+
+# --- Speech-to-text (pick one: local Whisper or API) ---
+openai-whisper>=20231117      # OpenAI Whisper (runs locally)
+torch>=2.2.0                  # PyTorch backend for Whisper
+torchaudio>=2.2.0             # Audio utilities for PyTorch
+faster-whisper                # Faster local alternative to openai-whisper (optional, can remove)
+openai                        # Whisper API / GPT models (optional)
+
+# --- Translation ---
+deep-translator>=1.11.4       # Lightweight translation wrapper (Google backend)
+
+# --- LLM orchestration / agents ---
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
+langchain-groq                # LangChain wrapper for Groq
+groq                          # Official Groq Python client
+langchain-openai              # Optional
+langchain-anthropic           # Optional
+langgraph                     # Agent loops / branching
+
+# --- RAG pipeline ---
+chromadb>=0.5.0               # Local vector store
+sentence-transformers>=3.0.0  # HuggingFace embedding models
+langchain-huggingface>=0.0.3  # LangChain <-> HuggingFace embeddings bridge
+huggingface-hub>=0.23.0       # Model downloading from HuggingFace Hub
+tiktoken>=0.7.0               # Token counting for text splitting
+
+# --- Structured outputs (summary, action items, decisions) ---
+pydantic
+
+# --- Backend API (optional) ---
+fastapi
+uvicorn[standard]
+python-multipart              # File uploads (audio/recordings)
+
+# --- Streamlit UI ---
+streamlit>=1.35.0
+streamlit-extras>=0.4.0       # Additional Streamlit widgets / utilities
+watchdog>=4.0.0               # File-change watcher (improves hot-reload)
+
+# --- PDF & TXT export ---
+reportlab>=4.2.0              # PDF generation
+fpdf2>=2.7.9                  # Lightweight alternative PDF library
+
+# --- Integrations (optional) ---
+google-api-python-client
+google-auth-oauthlib
+slack-sdk
+
+# --- Utilities ---
+python-dotenv>=1.0.0          # Load API keys from .env
+numpy>=1.26.0
+tqdm>=4.66.0                  # Progress bars
+requests>=2.32.0
